@@ -1,6 +1,7 @@
 package com.whyxian.springbootinit.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.whyxian.springbootinit.model.dto.user.UserQueryRequest;
 import com.whyxian.springbootinit.model.entity.User;
@@ -119,4 +120,5 @@ public interface UserService extends IService<User> {
      */
     QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
 
+    Page<UserVO> listUserVOByPage(UserQueryRequest userQueryRequest);
 }

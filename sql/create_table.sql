@@ -1,10 +1,10 @@
 # 建表脚本
 
 -- 创建库
-create database if not exists my_db;
+create database if not exists xian_search;
 
 -- 切换库
-use my_db;
+use xian_search;
 
 -- 用户表
 create table if not exists user
