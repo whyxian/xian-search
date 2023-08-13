@@ -1,7 +1,10 @@
 package com.whyxian.springbootinit.controller;
 
-import com.whyxian.springbootinit.model.dto.search.AggregateSearchRequest;
-import com.whyxian.springbootinit.model.vo.AggregateSearchVO;
+import com.whyxian.springbootinit.common.BaseResponse;
+import com.whyxian.springbootinit.common.ResultUtils;
+import com.whyxian.springbootinit.manager.SearchFacade;
+import com.whyxian.springbootinit.model.dto.search.SearchRequest;
+import com.whyxian.springbootinit.model.vo.SearchVO;
 import com.whyxian.springbootinit.service.PictureService;
 import com.whyxian.springbootinit.service.PostService;
 import com.whyxian.springbootinit.service.UserService;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @program: xian-search-project
@@ -26,20 +29,22 @@ import java.util.List;
 public class SearchController {
 
     @Resource
-    private PictureService pictureService;
-
-    @Resource
     private UserService userService;
 
     @Resource
     private PostService postService;
 
-//    @PostMapping("/all")
-//    public List<AggregateSearchVO> aggregateSearch(@RequestBody AggregateSearchRequest searchRequest){
-//
-//        String searchText = searchRequest.getSearchText();
-//        pictureService.searchPicture(searchText, 1, 10);
-//
-//    }
+    @Resource
+    private PictureService pictureService;
+
+    @Resource
+    private SearchFacade searchFacade;
+
+    @PostMapping("/all")
+    public BaseResponse<SearchVO> searchAll(@RequestBody SearchRequest searchRequest, HttpServletRequest request) {
+        return ResultUtils.success(searchFacade.searchAll(searchRequest, request));
+    }
+
+
 
 }
