@@ -1,5 +1,6 @@
 package com.whyxian.springbootinit.datasource;
 
+import com.whyxian.springbootinit.model.entity.User;
 import com.whyxian.springbootinit.model.enums.SearchTypeEnum;
 import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Component;
@@ -21,7 +22,7 @@ public class DataSourceRegistry {
     @Resource
     private PictureDataSource pictureDataSource;
 
-    private Map<String, DataSource<T>> typeDataSourceMap;
+    private Map<String, DataSource> typeDataSourceMap;
 
     @PostConstruct
     public void doInit() {
